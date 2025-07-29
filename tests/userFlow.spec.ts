@@ -26,3 +26,4 @@ test.describe('User shopping flow', () => {
     await cartAssert.verifyItemInCart();
   });
 });
+
