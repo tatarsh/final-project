@@ -14,7 +14,7 @@ test('User can login, filter, add item to cart and verify cart', async ({ page }
 
   await loginPage.navigate('https://www.saucedemo.com/');
   await loginPage.login('standard_user', 'secret_sauce');
-  await homePage.sortProducts('za');
+  // await homePage.sortProducts('za');
   await homePage.addBackpackToCart();
   await homeAssert.verifyCartCount(1);
   await homePage.goToCart();
