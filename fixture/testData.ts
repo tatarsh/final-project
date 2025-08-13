@@ -1,0 +1,102 @@
+export const testData = {
+  baseURL: "https://www.saucedemo.com/",
+  users: {
+    standard: {
+      username: "standard_user",
+      password: "secret_sauce",
+      description: "Standard user with full access"
+    },
+    locked: {
+      username: "locked_out_user",
+      password: "secret_sauce",
+      description: "Locked out user"
+    },
+    problem: {
+      username: "problem_user",
+      password: "secret_sauce",
+      description: "Problem user with UI issues"
+    },
+    performance: {
+      username: "performance_glitch_user",
+      password: "secret_sauce",
+      description: "Performance glitch user"
+    }
+  },
+  products: {
+    sauceLabsBackpack: {
+      name: "Sauce Labs Backpack",
+      price: "$29.99",
+      description: "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection."
+    },
+    sauceLabsBikeLight: {
+      name: "Sauce Labs Bike Light",
+      price: "$9.99",
+      description: "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included."
+    },
+    sauceLabsBoltTshirt: {
+      name: "Sauce Labs Bolt T-Shirt",
+      price: "$15.99",
+      description: "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt."
+    },
+    sauceLabsFleeceJacket: {
+      name: "Sauce Labs Fleece Jacket",
+      price: "$49.99",
+      description: "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office."
+    },
+    sauceLabsOnesie: {
+      name: "Sauce Labs Onesie",
+      price: "$7.99",
+      description: "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel."
+    },
+    testAllTheThingsTshirt: {
+      name: "Test.allTheThings() T-Shirt (Red)",
+      price: "$15.99",
+      description: "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton."
+    }
+  },
+  sortOptions: {
+    nameAsc: "az",
+    nameDesc: "za",
+    priceAsc: "lohi",
+    priceDesc: "hilo"
+  },
+  checkoutData: {
+    valid: {
+      firstName: "John",
+      lastName: "Doe",
+      postalCode: "12345"
+    },
+    invalid: {
+      firstName: "",
+      lastName: "",
+      postalCode: ""
+    },
+    specialCharacters: {
+      firstName: "José",
+      lastName: "O'Connor",
+      postalCode: "A1B-2C3"
+    }
+  },
+  expectedMessages: {
+    lockedUserError: "Epic sadface: Sorry, this user has been locked out.",
+    invalidCredentialsError: "Epic sadface: Username and password do not match any user in this service",
+    checkoutError: "Error: First Name is required",
+    checkoutComplete: "Thank you for your order!",
+    checkoutCompleteMessage: "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+  },
+  pageTitles: {
+    login: "Swag Labs",
+    inventory: "Swag Labs",
+    cart: "Swag Labs",
+    checkout: "Swag Labs",
+    checkoutComplete: "Swag Labs"
+  },
+  urls: {
+    login: "https://www.saucedemo.com/",
+    inventory: "https://www.saucedemo.com/inventory.html",
+    cart: "https://www.saucedemo.com/cart.html",
+    checkout: "https://www.saucedemo.com/checkout-step-one.html",
+    checkoutOverview: "https://www.saucedemo.com/checkout-step-two.html",
+    checkoutComplete: "https://www.saucedemo.com/checkout-complete.html"
+  }
+};
