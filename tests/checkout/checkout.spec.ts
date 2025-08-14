@@ -345,14 +345,9 @@ test.describe('Checkout Functionality Tests', () => {
        */
       TestUtils.logTestStep('Verifying checkout total calculations');
       
-      const itemTotal = await checkoutPage.getSubtotal();
-      const tax = await checkoutPage.getTax();
-      const total = await checkoutPage.getTotal();
-      
-      // Parse currency values and verify calculation
-      const itemTotalValue = parseFloat(itemTotal.replace('$', ''));
-      const taxValue = parseFloat(tax.replace('$', ''));
-      const totalValue = parseFloat(total.replace('$', ''));
+      const itemTotalValue = await checkoutPage.getSubtotal();
+      const taxValue = await checkoutPage.getTax();
+      const totalValue = await checkoutPage.getTotal();
       
       expect(totalValue).toBeCloseTo(itemTotalValue + taxValue, 2);
     });
@@ -457,7 +452,7 @@ test.describe('Checkout Functionality Tests', () => {
       TestUtils.logTestStep('Cancelling checkout from information page');
       
       await checkoutPage.cancelCheckout();
-      await TestUtils.verifyURLContains(page, 'inventory.html');
+      await TestUtils.verifyURLContains(page, 'cart.html');
       
       // Verify cart still contains items
       await homePage.goToCart();

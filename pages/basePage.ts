@@ -8,19 +8,22 @@ export class BasePage {
   }
 
   async click(selector: string) {
-    await this.page.click(selector);
+    await this.page.waitForSelector(selector, { state: 'visible' });
+    await this.page.click(selector, { strict: true });
   }
 
   async type(selector: string, text: string) {
+    await this.page.waitForSelector(selector, { state: 'visible' });
     await this.page.fill(selector, text);
   }
 
   async getText(selector: string) {
+    await this.page.waitForSelector(selector);
     return this.page.textContent(selector);
   }
 
   async waitForElement(selector: string, timeout = 5000) {
-    await this.page.waitForSelector(selector, { timeout });
+    await this.page.waitForSelector(selector, { timeout, state: 'visible' });
   }
 
   async isElementVisible(selector: string) {

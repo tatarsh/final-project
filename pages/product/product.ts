@@ -3,11 +3,11 @@ import { productLocators } from './productLocator';
 
 export class ProductPage extends BasePage {
   async addProductToCart() {
-    await this.click(productLocators.addToCartButton);
+    await this.page.locator('.inventory_details_desc_container').locator(productLocators.addToCartButton).click();
   }
 
   async removeProductFromCart() {
-    await this.click(productLocators.removeFromCartButton);
+    await this.page.locator('.inventory_details_desc_container').locator(productLocators.removeFromCartButton).click();
   }
 
   async goBackToProducts() {

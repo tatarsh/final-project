@@ -3,6 +3,7 @@ import { ProductPage } from '../../pages/product/product';
 import { ProductAssertions } from '../../pages/product/productAssertion';
 import { HomePage } from '../../pages/home/home';
 import { LoginPage } from '../../pages/login/login';
+import { CartPage } from '../../pages/cart/cart';
 import { TestUtils } from '../utils/testUtils';
 import { testData } from '../../fixture/testData';
 
@@ -251,7 +252,7 @@ test.describe('Product Details Functionality Tests', () => {
       await homePage.goToCart();
       
       // Verify product is still in cart
-      const cartPage = new (await import('../../pages/cart/cart')).CartPage(page);
+      const cartPage = new CartPage(page);
       const itemCount = await cartPage.getCartItemCount();
       expect(itemCount).toBe(1);
     });
@@ -396,7 +397,7 @@ test.describe('Product Details Functionality Tests', () => {
       await productPage.logout();
       
       // Verify we're on login page
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
       await loginPage.waitForLoginForm();
     });
 

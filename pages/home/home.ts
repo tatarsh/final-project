@@ -16,18 +16,19 @@ export class HomePage extends BasePage {
   }
 
   async addAllProductsToCart() {
-    const addButtons = await this.page.locator(homeLocators.addToCartButtons).all();
-    for (const button of addButtons) {
-      await button.click();
-      await this.waitForTimeout(500);
+    await this.waitForProductsToLoad();
+    const addButtons = this.page.locator(homeLocators.addToCartButtons);
+    while (await addButtons.count() > 0) {
+      await addButtons.first().click();
+      await this.waitForTimeout(100);
     }
   }
 
   async removeAllProductsFromCart() {
-    const removeButtons = await this.page.locator(homeLocators.removeFromCartButtons).all();
-    for (const button of removeButtons) {
-      await button.click();
-      await this.waitForTimeout(500);
+    const removeButtons = this.page.locator(homeLocators.removeFromCartButtons);
+    while (await removeButtons.count() > 0) {
+      await removeButtons.first().click();
+      await this.waitForTimeout(100);
     }
   }
 
@@ -48,8 +49,8 @@ export class HomePage extends BasePage {
   }
 
   async clickProductByName(productName: string) {
-    const productLink = this.page.locator(`text=${productName}`);
-    await productLink.click();
+    const productItem = this.page.locator(homeLocators.productItemByName(productName));
+    await productItem.locator(homeLocators.productName).click();
   }
 
   async getProductPrice(productName: string) {

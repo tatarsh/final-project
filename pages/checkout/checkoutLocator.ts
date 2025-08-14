@@ -16,6 +16,7 @@ export const checkoutLocators = {
   total: '.summary_total_label',
   finishButton: '[data-test="finish"]',
   backToCartButton: '[data-test="cancel"]',
+  backToCartButtonStepTwo: '[data-test="cancel"]',
   
   // Checkout Complete
   completeHeader: '.complete-header',

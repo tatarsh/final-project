@@ -6,8 +6,8 @@ export const productLocators = {
   productImage: '.inventory_details_img',
   
   // Action Buttons
-  addToCartButton: '[data-test^="add-to-cart-"]',
-  removeFromCartButton: '[data-test^="remove-"]',
+  addToCartButton: '[data-test^="add-to-cart"]',
+  removeFromCartButton: '[data-test^="remove"]',
   backToProductsButton: '[data-test="back-to-products"]',
   
   // Cart and Menu
