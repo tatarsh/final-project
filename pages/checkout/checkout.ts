@@ -21,7 +21,24 @@ export class CheckoutPage extends BasePage {
   }
 
   async goBackToCart() {
-    await this.click(checkoutLocators.backToCartButton);
+    // Step one and step two both use a cancel button to go back to cart
+    if (await this.isElementVisible(checkoutLocators.backToCartButton)) {
+      await this.click(checkoutLocators.backToCartButton);
+      return;
+    }
+    if (await this.isElementVisible(checkoutLocators.backToCartButtonStepTwo)) {
+      await this.click(checkoutLocators.backToCartButtonStepTwo);
+      return;
+    }
+    // On checkout complete page, back home navigates to inventory
+    if (await this.isElementVisible(checkoutLocators.backHomeButton)) {
+      await this.click(checkoutLocators.backHomeButton);
+      return;
+    }
+  }
+
+  async backHome() {
+    await this.click(checkoutLocators.backHomeButton);
   }
 
   async getCheckoutItemCount() {
@@ -41,17 +58,23 @@ export class CheckoutPage extends BasePage {
 
   async getSubtotal() {
     const subtotalElement = this.page.locator(checkoutLocators.subtotal);
-    return await subtotalElement.textContent();
+    const text = await subtotalElement.textContent();
+    const match = text?.match(/\$([0-9]+\.[0-9]{2})/);
+    return match ? parseFloat(match[1]) : NaN;
   }
 
   async getTax() {
     const taxElement = this.page.locator(checkoutLocators.tax);
-    return await taxElement.textContent();
+    const text = await taxElement.textContent();
+    const match = text?.match(/\$([0-9]+\.[0-9]{2})/);
+    return match ? parseFloat(match[1]) : NaN;
   }
 
   async getTotal() {
     const totalElement = this.page.locator(checkoutLocators.total);
-    return await totalElement.textContent();
+    const text = await totalElement.textContent();
+    const match = text?.match(/\$([0-9]+\.[0-9]{2})/);
+    return match ? parseFloat(match[1]) : NaN;
   }
 
   async clearCheckoutForm() {

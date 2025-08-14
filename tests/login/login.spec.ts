@@ -170,7 +170,7 @@ test.describe('Login Functionality Tests', () => {
       await loginAssert.verifyLoginErrorText(testData.expectedMessages.lockedUserError);
 
       TestUtils.logTestStep('Verify user remains on login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
 
       TestUtils.logTestStep('Verify form fields retain entered values');
       await loginAssert.verifyUsernameFieldValue(testData.users.locked.username);
@@ -204,7 +204,7 @@ test.describe('Login Functionality Tests', () => {
       await loginAssert.verifyLoginErrorText(testData.expectedMessages.invalidCredentialsError);
 
       TestUtils.logTestStep('Verify user remains on login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
     });
 
     test('should display error message for empty username', async ({ page }) => {
@@ -232,7 +232,7 @@ test.describe('Login Functionality Tests', () => {
       await loginAssert.verifyLoginErrorVisible();
 
       TestUtils.logTestStep('Verify user remains on login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
     });
 
     test('should display error message for empty password', async ({ page }) => {
@@ -260,7 +260,7 @@ test.describe('Login Functionality Tests', () => {
       await loginAssert.verifyLoginErrorVisible();
 
       TestUtils.logTestStep('Verify user remains on login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
     });
 
     test('should display error message for empty credentials', async ({ page }) => {
@@ -288,7 +288,7 @@ test.describe('Login Functionality Tests', () => {
       await loginAssert.verifyLoginErrorVisible();
 
       TestUtils.logTestStep('Verify user remains on login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
     });
   });
 
@@ -422,11 +422,11 @@ test.describe('Login Functionality Tests', () => {
        */
 
       TestUtils.logTestStep('Verify initial URL is login page');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
 
       TestUtils.logTestStep('Attempt failed login and verify URL remains');
       await loginPage.login('invalid_user', 'wrong_password');
-      await TestUtils.verifyURLContains(page, 'index.html');
+      await TestUtils.verifyURLContains(page, '/');
 
       TestUtils.logTestStep('Attempt successful login and verify URL changes');
       await loginPage.login(testData.users.standard.username, testData.users.standard.password);

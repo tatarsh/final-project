@@ -4,6 +4,7 @@ import { HomePage } from '../../pages/home/home';
 import { HomeAssertions } from '../../pages/home/homeAssertion';
 import { TestUtils } from '../utils/testUtils';
 import { testData } from '../../fixture/testData';
+import { homeLocators } from '../../pages/home/homeLocator';
 
 test.describe('Home/Inventory Page Tests', () => {
   let loginPage: LoginPage;
@@ -529,7 +530,7 @@ test.describe('Home/Inventory Page Tests', () => {
         const productKey = productKeys[i];
         const product = testData.products[productKey];
         
-        await homePage.click(`[data-test="add-to-cart-${productKey.replace(/([A-Z])/g, '-$1').toLowerCase()}"]`);
+        await page.click(homeLocators.addToCartButtonByName(product.name));
         await homeAssert.verifyCartCount(i + 1);
       }
     });

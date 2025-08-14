@@ -39,19 +39,20 @@ export class ProductAssertions {
 
   // Button Assertions
   async verifyAddToCartButtonVisible() {
-    await expect(this.page.locator(productLocators.addToCartButton)).toBeVisible();
+    // Product details page has a single action button; scope to details container to avoid strict mode clashes
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.addToCartButton)).toBeVisible();
   }
 
   async verifyAddToCartButtonEnabled() {
-    await expect(this.page.locator(productLocators.addToCartButton)).toBeEnabled();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.addToCartButton)).toBeEnabled();
   }
 
   async verifyRemoveFromCartButtonVisible() {
-    await expect(this.page.locator(productLocators.removeFromCartButton)).toBeVisible();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.removeFromCartButton)).toBeVisible();
   }
 
   async verifyRemoveFromCartButtonEnabled() {
-    await expect(this.page.locator(productLocators.removeFromCartButton)).toBeEnabled();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.removeFromCartButton)).toBeEnabled();
   }
 
   async verifyBackToProductsButtonVisible() {
@@ -104,7 +105,9 @@ export class ProductAssertions {
 
   async verifyURL(expectedURL?: string) {
     if (expectedURL) {
-      await expect(this.page).toHaveURL(expectedURL);
+      // Allow optional query string like ?id=4
+      const escaped = expectedURL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      await expect(this.page).toHaveURL(new RegExp(`${escaped}(?:\\?.*)?$`));
     } else {
       await expect(this.page).toHaveURL(/.*inventory-item\.html/);
     }
@@ -149,16 +152,16 @@ export class ProductAssertions {
     await expect(this.page.locator(productLocators.productName)).toBeVisible();
     await expect(this.page.locator(productLocators.productPrice)).toBeVisible();
     await expect(this.page.locator(productLocators.productDescription)).toBeVisible();
-    await expect(this.page.locator(productLocators.addToCartButton)).toBeVisible();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.addToCartButton)).toBeVisible();
     await expect(this.page.locator(productLocators.backToProductsButton)).toBeVisible();
   }
 
   async verifyRemoveFromCartButtonNotVisible() {
-    await expect(this.page.locator(productLocators.removeFromCartButton)).not.toBeVisible();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.removeFromCartButton)).not.toBeVisible();
   }
 
   async verifyAddToCartButtonNotVisible() {
-    await expect(this.page.locator(productLocators.addToCartButton)).not.toBeVisible();
+    await expect(this.page.locator('.inventory_details_desc_container').locator(productLocators.addToCartButton)).not.toBeVisible();
   }
 
   async verifyMenuOpen() {

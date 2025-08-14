@@ -181,7 +181,8 @@ export class CheckoutAssertions {
   }
 
   async verifyCheckoutOverviewPageElements() {
-    await expect(this.page.locator(checkoutLocators.checkoutItems)).toBeVisible();
+    const count = await this.page.locator(checkoutLocators.checkoutItems).count();
+    expect(count).toBeGreaterThan(0);
     await expect(this.page.locator(checkoutLocators.finishButton)).toBeVisible();
     await expect(this.page.locator(checkoutLocators.cancelButton)).toBeVisible();
   }
