@@ -3,7 +3,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 
-console.log('🧪 Playwright E2E Testing Framework - Test Runner');
+console.log('Playwright E2E Testing Framework - Test Runner');
 console.log('================================================\n');
 
 const testOptions = [

@@ -48,3 +48,15 @@ mocha/
 output/
 __tests__/
 __output__/
+playwright/
+playwright-report/
+playwright-results/
+playwright-logs/
+test-report/
+test-reports/
+*.test-report*
+*.test-reports*
+reports/
+*.report.*
+*.test-report.*
+*.test-reports.*
