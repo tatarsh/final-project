@@ -34,3 +34,17 @@ Thumbs.db
 # HTML reports
 reports/
 **/report*.html
+
+# Test results
+test-results/
+*.test-results*
+*.spec-results*
+*.results*
+*.xml
+*.json
+*.html
+junit/
+mocha/
+output/
+__tests__/
+__output__/
